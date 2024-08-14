@@ -20,18 +20,18 @@
 {{--                <a href="/">--}}
 {{--                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />--}}
 {{--                </a>--}}
-
                 <h1 class="text-4xl font-bold text-gray-400">
-                    @if(request()->routeIs('login'))
-                        User Log In
-                    @elseif(request()->routeIs('register'))
-                        User Registration
+                    @if(request()->routeIs('admin.login'))
+                        Admin Log In
+                    @elseif(request()->routeIs('admin.register'))
+                        Admin Registration
+                    @elseif(request()->routeIs('admin.password.request'))
+                        Admin Forgot Password
                     @endif
                 </h1>
             </div>
 
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-
                 {{ $slot }}
             </div>
         </div>

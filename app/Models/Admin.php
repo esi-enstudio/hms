@@ -10,9 +10,11 @@ use Illuminate\Notifications\Notifiable;
 /**
  * @method static create(array $user)
  */
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use HasFactory, Notifiable;
+
+    protected string $guard = 'admin';
 
     /**
      * The attributes that are mass assignable.
