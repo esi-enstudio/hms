@@ -29,7 +29,7 @@ class LoginRequest extends FormRequest
     {
         return [
 //            'email' => ['required', 'string', 'email'],
-            'phone_number' => ['required','numeric','digits:11','starts_with:019,017,018,016,015'],
+            'phone_number' => ['required','numeric','digits:11','starts_with:019,014,017,013,018,016,015'],
             'password' => ['required', 'string'],
         ];
     }
