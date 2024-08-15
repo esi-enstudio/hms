@@ -35,52 +35,45 @@
         <div id="mega-menu-icons" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
             <ul class="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
 
+                <!-- Reports -->
                 <li>
-                    <button id="reports-button" data-dropdown-toggle="reports" class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">
-                        Reports
-                        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                        </svg>
-                    </button>
+                    <x-nav-dropdown-button data-dropdown-toggle="reports" id="reports-button">Reports</x-nav-dropdown-button>
+                    <x-mega-menu id="reports">
+                        <x-mega-menu-body aria="reports-button">
+                            <x-mega-menu-link href="#">
+                                <x-svg.currency-dollar/>
+                                Commission's
+                            </x-mega-menu-link>
 
-                    <div id="reports" class="absolute z-10 grid hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700">
-                        <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                            <ul class="space-y-4" aria-labelledby="reports-button">
-                                <li>
-                                    <x-nav-link href="{{ route('itop-replace.index') }}" :active="request()->routeIs('itop-replace.*')" class="flex items-center group">
-                                        <span class="sr-only">About us</span>
-                                        <svg class="w-3 h-3 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                                        </svg>
-                                        Itop Replace
-                                    </x-nav-link>
-                                </li>
-                                <li>
-                                    <a href="#" class="flex items-center text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 group">
-                                        <span class="sr-only">Library</span>
-                                        <svg class="w-3 h-3 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="m1.56 6.245 8 3.924a1 1 0 0 0 .88 0l8-3.924a1 1 0 0 0 0-1.8l-8-3.925a1 1 0 0 0-.88 0l-8 3.925a1 1 0 0 0 0 1.8Z"/>
-                                            <path d="M18 8.376a1 1 0 0 0-1 1v.163l-7 3.434-7-3.434v-.163a1 1 0 0 0-2 0v.786a1 1 0 0 0 .56.9l8 3.925a1 1 0 0 0 .88 0l8-3.925a1 1 0 0 0 .56-.9v-.786a1 1 0 0 0-1-1Z"/>
-                                            <path d="M17.993 13.191a1 1 0 0 0-1 1v.163l-7 3.435-7-3.435v-.163a1 1 0 1 0-2 0v.787a1 1 0 0 0 .56.9l8 3.925a1 1 0 0 0 .88 0l8-3.925a1 1 0 0 0 .56-.9v-.787a1 1 0 0 0-1-1Z"/>
-                                        </svg>
-                                        Commission's
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-{{--                        <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">--}}
-{{--                            <ul class="space-y-4">--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                        <div class="p-4 text-gray-900 dark:text-white">--}}
-{{--                            <ul class="space-y-4">--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-                    </div>
+                            <x-mega-menu-link href="#">
+                                <x-svg.arrow-rounded-square/>
+                                Itop Replace
+                            </x-mega-menu-link>
+                        </x-mega-menu-body>
+                    </x-mega-menu>
                 </li>
-{{--                <li>--}}
-{{--                    <a href="#" class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Team</a>--}}
-{{--                </li>--}}
+
+                <!-- Field Force -->
+                <li>
+                    <x-nav-dropdown-button data-dropdown-toggle="ff" id="ff-button">Field Force</x-nav-dropdown-button>
+                    <x-mega-menu id="ff">
+                        <x-mega-menu-body aria="ff-button">
+                            <x-mega-menu-link href="#">
+                                <x-svg.users/>
+                                Supervisor
+                            </x-mega-menu-link>
+
+                            <x-mega-menu-link href="#">
+                                <x-svg.user-group/>
+                                Rso
+                            </x-mega-menu-link>
+                        </x-mega-menu-body>
+                    </x-mega-menu>
+                </li>
+
+                <li>
+                    <x-nav-link href="#">Other's</x-nav-link>
+                </li>
             </ul>
         </div>
     </div>
