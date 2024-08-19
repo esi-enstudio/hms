@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\ItopReplaceController;
+use App\Http\Controllers\RsoController;
+use App\Http\Controllers\SupervisorController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
@@ -47,9 +49,12 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::resources([
         // Itop Replace
         'itop-replace' => ItopReplaceController::class,
-
         // Commission
         'commission' => CommissionController::class,
+        // Supervisor
+        'supervisor' => SupervisorController::class,
+        // Rso
+        'rso' => RsoController::class,
     ]);
 
 

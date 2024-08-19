@@ -65,16 +65,27 @@
 
                 <!-- Field Force -->
                 <li>
-                    <x-nav-dropdown-button data-dropdown-toggle="ff" id="ff-button">Field Force</x-nav-dropdown-button>
+                    <x-nav-dropdown-button
+                        data-dropdown-toggle="ff"
+                        id="ff-button"
+                        :active="request()->routeIs('admin.rso.*') || request()->routeIs('admin.supervisor.*')"
+                    >
+                        Field Force
+                    </x-nav-dropdown-button>
+
                     <x-mega-menu id="ff">
                         <x-mega-menu-body aria="ff-button">
-                            <x-mega-menu-link href="#">
-                                <x-svg.users/>
+                            <x-mega-menu-link
+                                :active="request()->routeIs('admin.supervisor.*')"
+                                href="{{ route('admin.supervisor.index') }}">
+                                <x-svg.users :active="request()->routeIs('admin.supervisor.*')"/>
                                 Supervisor
                             </x-mega-menu-link>
 
-                            <x-mega-menu-link href="#">
-                                <x-svg.user-group/>
+                            <x-mega-menu-link
+                                :active="request()->routeIs('admin.rso.*')"
+                                href="{{ route('admin.rso.index') }}">
+                                <x-svg.user-group :active="request()->routeIs('admin.rso.*')"/>
                                 Rso
                             </x-mega-menu-link>
                         </x-mega-menu-body>
