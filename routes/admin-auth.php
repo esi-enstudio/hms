@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\CommissionController;
+use App\Http\Controllers\ItopReplaceController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
@@ -42,7 +44,13 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
         return view('admin.dashboard');
     })->middleware(['verified'])->name('dashboard');
 
+    Route::resources([
+        // Itop Replace
+        'itop-replace' => ItopReplaceController::class,
 
+        // Commission
+        'commission' => CommissionController::class,
+    ]);
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

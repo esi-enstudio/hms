@@ -37,16 +37,26 @@
 
                 <!-- Reports -->
                 <li>
-                    <x-nav-dropdown-button data-dropdown-toggle="reports" id="reports-button">Reports</x-nav-dropdown-button>
+                    <x-nav-dropdown-button
+                        data-dropdown-toggle="reports"
+                        id="reports-button"
+                        :active="request()->routeIs('admin.itop-replace.*') || request()->routeIs('admin.commission.*')"
+                    >
+                        Reports
+                    </x-nav-dropdown-button>
                     <x-mega-menu id="reports">
                         <x-mega-menu-body aria="reports-button">
-                            <x-mega-menu-link href="#">
-                                <x-svg.currency-dollar/>
+                            <x-mega-menu-link
+                                :active="request()->routeIs('admin.commission.*')"
+                                href="{{ route('admin.commission.index') }}">
+                                <x-svg.currency-dollar :active="request()->routeIs('admin.commission.*')"/>
                                 Commission's
                             </x-mega-menu-link>
 
-                            <x-mega-menu-link href="#">
-                                <x-svg.arrow-rounded-square/>
+                            <x-mega-menu-link
+                                :active="request()->routeIs('admin.itop-replace.*')"
+                                href="{{ route('admin.itop-replace.index') }}">
+                                <x-svg.arrow-rounded-square :active="request()->routeIs('admin.itop-replace.*')"/>
                                 Itop Replace
                             </x-mega-menu-link>
                         </x-mega-menu-body>

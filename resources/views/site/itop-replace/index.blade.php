@@ -1,4 +1,3 @@
-
 <x-admin-app-layout>
-    <h1>About</h1>
+    <h1>Itop Replace (Index)</h1>
 </x-admin-app-layout>
