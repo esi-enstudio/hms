@@ -2,9 +2,15 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
+use App\Models\DdHouse;
+use App\Models\Manager;
+use App\Models\Retailer;
+use App\Models\Rso;
+use App\Models\Supervisor;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +19,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+         DdHouse::factory(3)->create();
+         Manager::factory(3)->create();
+         Supervisor::factory(3)->create();
+         Rso::factory(25)->create();
+         Retailer::factory(2900)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        Admin::create([
+            'name' => 'Sadekin Islam',
+            'email' => 'sadekin@enstudio.com',
+            'phone_number' => '01732547755',
+            'email_verified_at' => now(),
+            'password' => Hash::make('32133213'),
         ]);
     }
 }

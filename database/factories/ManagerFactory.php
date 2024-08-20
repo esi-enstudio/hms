@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Supervisor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Supervisor>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Manager>
  */
-class SupervisorFactory extends Factory
+class ManagerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +18,7 @@ class SupervisorFactory extends Factory
     {
         return [
             'user_id' => fake()->numberBetween(1, 2900),
-            'dd_house_id' => fake()->numberBetween(1, 3),
-            'manager_id' => fake()->numberBetween(1, 3),
+            'dd_house_id' => fake()->unique()->numberBetween(1, 3),
             'name' => fake()->name(),
             'father_name' => fake()->firstNameMale(),
             'mother_name' => fake()->firstNameFemale(),
@@ -28,7 +26,7 @@ class SupervisorFactory extends Factory
             'nid' => fake()->unique()->numberBetween(4821100000000, 19804821100000000),
             'address' => fake()->address(),
             'phone_number' => fake()->unique()->phoneNumber(),
-            'designation' => 'supervisor',
+            'designation' => 'manager',
             'signature' => fake()->imageUrl(),
         ];
     }
