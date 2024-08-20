@@ -1,4 +1,4 @@
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
+<nav class="bg-white border-gray-200 dark:bg-gray-900 shadow-sm sm:rounded-lg">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
         <!-- Brand Logo -->
         @if(\Illuminate\Support\Facades\Route::has('admin.dashboard'))
@@ -68,7 +68,7 @@
                     <x-nav-dropdown-button
                         data-dropdown-toggle="ff"
                         id="ff-button"
-                        :active="request()->routeIs('admin.rso.*') || request()->routeIs('admin.supervisor.*')"
+                        :active="request()->routeIs('admin.rso.*') || request()->routeIs('admin.supervisor.*') || request()->routeIs('admin.manager.*') || request()->routeIs('admin.dd-house.*') || request()->routeIs('admin.retailer.*')"
                     >
                         Field Force
                     </x-nav-dropdown-button>
@@ -76,17 +76,40 @@
                     <x-mega-menu id="ff">
                         <x-mega-menu-body aria="ff-button">
                             <x-mega-menu-link
+                                :active="request()->routeIs('admin.dd-house.*')"
+                                href="{{ route('admin.dd-house.index') }}">
+                                <x-svg.users :active="request()->routeIs('admin.dd-house.*')"/>
+                                DD House
+                            </x-mega-menu-link>
+
+                            <x-mega-menu-link
+                                :active="request()->routeIs('admin.manager.*')"
+                                href="{{ route('admin.manager.index') }}">
+                                <x-svg.users :active="request()->routeIs('admin.manager.*')"/>
+                                Manager
+                            </x-mega-menu-link>
+
+                            <x-mega-menu-link
                                 :active="request()->routeIs('admin.supervisor.*')"
                                 href="{{ route('admin.supervisor.index') }}">
                                 <x-svg.users :active="request()->routeIs('admin.supervisor.*')"/>
                                 Supervisor
                             </x-mega-menu-link>
+                        </x-mega-menu-body>
 
+                        <x-mega-menu-body aria="ff-button">
                             <x-mega-menu-link
                                 :active="request()->routeIs('admin.rso.*')"
                                 href="{{ route('admin.rso.index') }}">
                                 <x-svg.user-group :active="request()->routeIs('admin.rso.*')"/>
                                 Rso
+                            </x-mega-menu-link>
+
+                            <x-mega-menu-link
+                                :active="request()->routeIs('admin.retailer.*')"
+                                href="{{ route('admin.retailer.index') }}">
+                                <x-svg.user-group :active="request()->routeIs('admin.retailer.*')"/>
+                                Retailer
                             </x-mega-menu-link>
                         </x-mega-menu-body>
                     </x-mega-menu>

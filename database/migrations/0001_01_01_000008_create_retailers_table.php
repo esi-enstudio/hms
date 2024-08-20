@@ -43,6 +43,8 @@ return new class extends Migration
             $table->string('tin_number')->unique()->nullable();
             $table->string('bts_code')->nullable();
             $table->string('route')->nullable();
+            $table->string('description')->nullable();
+            $table->string('remarks')->nullable();
             $table->timestamp('disabled_at')->nullable();
             $table->timestamps();
         });

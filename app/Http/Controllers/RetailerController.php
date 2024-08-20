@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Retailer;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 
 class RetailerController extends Controller
@@ -10,9 +13,11 @@ class RetailerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
-        //
+        return view('site.retailer.index', [
+            'retailers' => Retailer::latest()->paginate(10)
+        ]);
     }
 
     /**

@@ -1,7 +1,7 @@
-<x-admin-app-layout title="Itop Replace">
+<x-admin-app-layout title="Retailer's">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Itop Replace') }}
+            {{ __('Retailer\'s') }}
         </h2>
     </x-slot>
 
@@ -50,7 +50,7 @@
                                         <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                     </td>
                                 </tr>
-                            @empty
+                            @empty()
                                 <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                     <td class="px-6 py-4">
                                         <p>No data found.</p>

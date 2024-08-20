@@ -15,7 +15,9 @@ class SupervisorController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        return view('site.supervisor.index');
+        return view('site.supervisor.index', [
+            'supervisors' => Supervisor::latest()->paginate(10)
+        ]);
     }
 
     /**

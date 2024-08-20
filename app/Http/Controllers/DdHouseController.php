@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\DdHouse;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 
 class DdHouseController extends Controller
@@ -10,9 +13,11 @@ class DdHouseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
-        //
+        return view('site.dd-house.index',[
+            'houses' => DdHouse::latest()->paginate(10)
+        ]);
     }
 
     /**

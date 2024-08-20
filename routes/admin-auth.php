@@ -11,7 +11,10 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\CommissionController;
+use App\Http\Controllers\DdHouseController;
 use App\Http\Controllers\ItopReplaceController;
+use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\RetailerController;
 use App\Http\Controllers\RsoController;
 use App\Http\Controllers\SupervisorController;
 use Illuminate\Support\Facades\Route;
@@ -51,10 +54,17 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
         'itop-replace' => ItopReplaceController::class,
         // Commission
         'commission' => CommissionController::class,
+
+        // DD House
+        'dd-house' => DdHouseController::class,
+        // Manager
+        'manager' => ManagerController::class,
         // Supervisor
         'supervisor' => SupervisorController::class,
         // Rso
         'rso' => RsoController::class,
+        // Retailer
+        'retailer' => RetailerController::class,
     ]);
 
 

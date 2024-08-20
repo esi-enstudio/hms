@@ -15,7 +15,9 @@ class RsoController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        return view('site.rso.index');
+        return view('site.rso.index', [
+            'rsos' => Rso::latest()->paginate(10)
+        ]);
     }
 
     /**

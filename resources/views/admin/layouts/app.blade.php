@@ -22,7 +22,7 @@
 
             <!-- Page Heading -->
             @isset($header)
-                <header class="bg-white dark:bg-gray-800 shadow">
+                <header class="mt-2 bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
                     <div class="flex justify-between items-center max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
 
