@@ -25,4 +25,29 @@ class Manager extends Model
             'resign_at' => 'datetime',
         ];
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function ddHouse()
+    {
+        return $this->belongsTo(DdHouse::class);
+    }
+
+    public function supervisor()
+    {
+        return $this->hasMany(Supervisor::class);
+    }
+
+    public function rso()
+    {
+        return $this->hasMany(Rso::class);
+    }
+
+    public function retailer()
+    {
+        return $this->hasMany(Retailer::class);
+    }
 }

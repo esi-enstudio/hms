@@ -26,7 +26,7 @@
                     <div class="flex justify-between items-center max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
 
-                        <div class="text-sm text-gray-700">
+                        <div class="text-sm text-gray-800 dark:text-gray-200 font-semibold">
                             <p>{{ auth()->user()->name }}</p>
                             <p>{{ auth()->user()->phone_number }}</p>
                         </div>

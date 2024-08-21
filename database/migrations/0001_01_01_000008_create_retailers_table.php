@@ -24,9 +24,9 @@ return new class extends Migration
             $table->foreignIdFor(Supervisor::class);
             $table->foreignIdFor(Rso::class);
             $table->string('cluster_market')->nullable();
-            $table->string('retailer_code')->unique()->nullable();
-            $table->string('retailer_name')->nullable();
-            $table->string('retailer_type')->nullable();
+            $table->string('code')->unique()->nullable();
+            $table->string('name')->nullable();
+            $table->string('type')->nullable();
             $table->string('enabled')->nullable();
             $table->string('sim_seller')->nullable();
             $table->string('itop_number')->unique()->nullable();
