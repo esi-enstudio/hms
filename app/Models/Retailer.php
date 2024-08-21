@@ -25,4 +25,29 @@ class Retailer extends Model
             'disabled_at' => 'datetime',
         ];
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function ddHouse()
+    {
+        return $this->belongsTo(DdHouse::class);
+    }
+
+    public function manager()
+    {
+        return $this->belongsTo(Manager::class);
+    }
+
+    public function supervisor()
+    {
+        return $this->belongsTo(Supervisor::class);
+    }
+
+    public function rso()
+    {
+        return $this->belongsTo(Rso::class);
+    }
 }

@@ -25,4 +25,29 @@ class Rso extends Model
             'resigning_date' => 'datetime',
         ];
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function ddHouse()
+    {
+        return $this->belongsTo(DdHouse::class);
+    }
+
+    public function manager()
+    {
+        return $this->belongsTo(Manager::class);
+    }
+
+    public function supervisor()
+    {
+        return $this->belongsTo(Supervisor::class);
+    }
+
+    public function retailer()
+    {
+        return $this->hasMany(Retailer::class);
+    }
 }

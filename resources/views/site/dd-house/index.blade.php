@@ -11,38 +11,26 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <table class="text-center whitespace-nowrap w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     SL
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Cluster
+                                    Cluster | Region
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Region
+                                    Code | Name
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Code
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Name
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Thana
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    District
+                                    Thana | District
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Address
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Latitude
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Longitude
+                                    Latitude | Longitude
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     BTS Code
@@ -51,10 +39,7 @@
                                     Disabled AT
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Created At
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Last Update
+                                    Create | Update
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Action
@@ -68,43 +53,33 @@
                                         {{ ++$sl }}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{ $house->cluster }}
+                                        <p>{{ $house->cluster }}</p>
+                                        <p>{{ $house->region }}</p>
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $house->region }}
+                                        <p>{{ $house->name }}</p>
+                                        <p>{{ $house->code }}</p>
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $house->code }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $house->name }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $house->thana }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $house->district }}
+                                        <p>{{ $house->thana }}</p>
+                                        <p>{{ $house->district }}</p>
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ $house->address }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $house->lat }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $house->long }}
+                                        <p>{{ $house->lat }}</p>
+                                        <p>{{ $house->long }}</p>
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ $house->bts_code }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $house->disabled_at->formattedDateTimeString() }}
+{{--                                        {{ $house->disabled_at->toDayDateTimeString() }}--}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $house->created_at->formattedDateTimeString() }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $house->updated_at->formattedDateTimeString() }}
+                                        <p>Create: {{ $house->created_at->toDayDateTimeString() }}</p>
+                                        <p>Last Update: {{ $house->updated_at->toDayDateTimeString() }}</p>
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>

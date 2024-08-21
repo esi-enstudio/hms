@@ -11,46 +11,76 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <table class="text-center whitespace-nowrap w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    Product name
+                                    SL
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Color
+                                    DD House
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Category
+                                    Name
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Price
+                                    Parents
                                 </th>
+                                <th scope="col" class="px-6 py-3">
+                                    NID | DOB
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Address
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Designation
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Signature
+                                </th>
+
                                 <th scope="col" class="px-6 py-3">
                                     Action
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse()
+                            @forelse($supervisors as $sl => $supervisor)
                                 <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Apple MacBook Pro 17"
+                                        {{ ++$sl }}
                                     </th>
                                     <td class="px-6 py-4">
-                                        Silver
+                                        <p>{{ $supervisor->ddHouse->name }}</p>
+                                        <p>{{ $supervisor->ddHouse->code }}</p>
                                     </td>
                                     <td class="px-6 py-4">
-                                        Laptop
+                                        <p>{{ $supervisor->name }}</p>
+                                        <p>{{ $supervisor->user->email }}</p>
                                     </td>
                                     <td class="px-6 py-4">
-                                        $2999
+                                        <p>{{ $supervisor->father_name }}</p>
+                                        <p>{{ $supervisor->mother_name }}</p>
                                     </td>
+                                    <td class="px-6 py-4">
+                                        <p>{{ $supervisor->nid }}</p>
+                                        <p>{{ $supervisor->dob }}</p>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $supervisor->address }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $supervisor->designation }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <img src="{{ $supervisor->signature }}" alt="manager sign">
+                                    </td>
+
                                     <td class="px-6 py-4">
                                         <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                     </td>
                                 </tr>
-                            @empty()
+                            @empty
                                 <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                     <td class="px-6 py-4">
                                         <p>No data found.</p>

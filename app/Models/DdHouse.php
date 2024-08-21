@@ -25,4 +25,29 @@ class DdHouse extends Model
             'disabled_at' => 'datetime',
         ];
     }
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function manager()
+    {
+        return $this->hasMany(Manager::class);
+    }
+
+    public function supervisor()
+    {
+        return $this->hasMany(Supervisor::class);
+    }
+
+    public function rso()
+    {
+        return $this->hasMany(Rso::class);
+    }
+
+    public function retailer()
+    {
+        return $this->hasMany(Retailer::class);
+    }
 }
