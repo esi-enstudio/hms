@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Retailer;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('itop_replaces', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(Retailer::class);
+            $table->string('issue_code')->nullable();
+            $table->string('serial');
+            $table->string('status')->default('processing');
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }
