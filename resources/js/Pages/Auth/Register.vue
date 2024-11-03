@@ -59,7 +59,7 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post("/register", {
+    form.post(route("register"), {
         onError: () => form.reset('password', 'password_confirmation'),
     });
 }
