@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Response;
@@ -11,12 +12,12 @@ use Inertia\ResponseFactory;
 
 class RegisterUserController extends Controller
 {
-    public function create(): Response|ResponseFactory
+    public function index(): Response|ResponseFactory
     {
         return inertia('Auth/Register');
     }
 
-    public function register(Request $request)
+    public function attempt(Request $request): RedirectResponse
     {
         // Validation
         $attributes = $request->validate([
