@@ -5,6 +5,13 @@
         <h1>Register Page</h1>
 
         <form @submit.prevent="submit" class="max-w-md mt-5">
+            <div>
+                <div>
+                    <label for="">Avatar</label>
+                </div>
+                <input type="file" id="avatar" @input="change">
+            </div>
+
             <!-- Full Name -->
             <TextInput name="Full Name" v-model="form.name" :message="form.errors.name"/>
 
