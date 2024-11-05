@@ -2,8 +2,6 @@
     <Authenticate>
         <Head title="Login |"/>
 
-        <h1>Login Page</h1>
-
         <form @submit.prevent="submit" class="max-w-md mt-5">
             <!-- Phone Number -->
             <TextInput name="Phone Number" v-model="form.phone" :message="form.errors.phone"/>

@@ -2,11 +2,13 @@
     <div>
         <header>
             <nav class="flex align-items-center justify-between bg-green-400 p-3">
-                <ul class="flex align-items-center space-x-4">
+                <ul v-if="$page.props.auth.user" class="flex align-items-center space-x-4">
                     <li><Link :href="route('home')" class="hover:text-white" :class="{'text-white bg-green-500 rounded p-2' : $page.component === 'Main'}">Home</Link></li>
                 </ul>
+                <div v-else></div>
 
                 <ul v-if="$page.props.auth.user" class="flex align-items-center space-x-4">
+                    <img class="w-[30px] rounded" :src="$page.props.auth.user.avatar ? ('storage/' + $page.props.auth.user.avatar) : ('storage/avatars/avatar.png')" alt="user image">
                     <li><p class="font-semibold text-white">User: {{$page.props.auth.user.name}}</p></li>
                     <span>|</span>
                     <li><Link class="hover:text-white" :href="route('logout')" method="post" as="button">Logout</Link></li>
