@@ -16,7 +16,7 @@
 
                     <img
                         class="object-cover w-28 h-28"
-                        :src="form.preview ?? 'storage/avatars/avatar.png'"
+                        :src="form.preview ?? 'https://icons.veryicon.com/png/o/miscellaneous/user-avatar/user-avatar-male-5.png'"
                      alt="register user image"/>
                 </div>
 

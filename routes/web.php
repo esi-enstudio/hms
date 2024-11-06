@@ -2,16 +2,16 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisterUserController;
+use App\Http\Resources\UserResource;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
-
-//Route::get('/', function () {
-//    return inertia('Main');
-//})->name('home');
-
 
 
 Route::middleware(['auth'])->group(function (){
     Route::inertia('/', 'Main')->name('home');
+    Route::inertia('/user', 'User', [
+        'users' => UserResource::collection(User::latest()->paginate(10))
+    ])->name('user');
     Route::post('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 });
 
