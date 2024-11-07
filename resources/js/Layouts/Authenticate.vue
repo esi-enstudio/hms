@@ -6,7 +6,7 @@
                 <ul v-if="$page.props.auth.user" class="flex align-items-center space-x-4">
                     <li><Link :href="route('home')" class="hover:text-white" :class="{'text-white bg-green-500 rounded p-2' : $page.component === 'Main'}">Home</Link></li>
 
-                    <li><Link :href="route('user')" class="hover:text-white" :class="{'text-white bg-green-500 rounded p-2' : $page.component === 'User'}">Users</Link></li>
+                    <li><Link :href="route('user.index')" class="hover:text-white" :class="{'text-white bg-green-500 rounded p-2' : $page.component === 'User'}">Users</Link></li>
                 </ul>
                 <div v-else></div>
 
@@ -25,7 +25,7 @@
             </nav>
         </header>
 
-        <main class="max-w-screen-xl mx-auto p-2">
+        <main class="max-w-screen-xl mx-auto p-2 bg-green-100">
             <slot/>
         </main>
     </div>

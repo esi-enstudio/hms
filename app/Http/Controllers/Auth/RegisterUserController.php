@@ -41,6 +41,6 @@ class RegisterUserController extends Controller
         Auth::login($user);
 
         // Redirect
-        return to_route('home');
+        return to_route('home')->with('msg', 'New user ['.$user['name'].'] was created successfully.');
     }
 }
