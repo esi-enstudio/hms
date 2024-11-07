@@ -3,6 +3,7 @@ import 'flowbite';
 import { createApp, h } from 'vue'
 import {createInertiaApp, Head, Link} from '@inertiajs/vue3'
 import { ZiggyVue } from '../../vendor/tightenco/ziggy'
+import {setThemeOnLoad} from "@/theme.js";
 
 createInertiaApp({
     title: (title) => `${title} HMS`,
@@ -26,3 +27,5 @@ createInertiaApp({
         showSpinner: true,
     },
 })
+
+setThemeOnLoad()

@@ -4,7 +4,10 @@
             <Head :title="`${$page.component} |`"/>
 
             <div class="flex items-center justify-between mb-3">
-                <Link class="border border-green-500 px-4 py-2 rounded-lg hover:bg-green-500 hover:text-white">Add New</Link>
+                <Link class="border border-green-400 px-4 py-2 rounded-lg hover:bg-green-400 hover:text-white">
+                    Add New
+                </Link>
+
                 <input v-model="search" type="search" placeholder="Type something...">
             </div>
 
@@ -42,7 +45,6 @@
 
             <Pagination :links="users"/>
 
-
         </Authenticate>
     </div>
 </template>
@@ -54,11 +56,12 @@ import {ref, watch} from "vue";
 import {router} from "@inertiajs/vue3";
 import {debounce} from "lodash";
 
-defineProps({
+const props = defineProps({
     users: Object,
+    searchTerm: String,
 })
 
-const search = ref("")
+const search = ref(props.searchTerm)
 
 watch(search, debounce(
     (query) => router.get('/user', { search: query }, { preserveState:true }),

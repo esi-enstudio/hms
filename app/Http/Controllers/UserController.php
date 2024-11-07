@@ -2,20 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request): Response|ResponseFactory
     {
         return inertia('User', [
-            'users' => User::when($request->search, function ($query){
-                $query->where('name', 'LIKE', '%'.$request->search.'%');
-            })->paginate(10)
+            'users' => UserResource::collection(User::when($request->search,function ($query, $search){
+                $query->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('email', 'LIKE', "%{$search}%")
+                ->orWhere('phone', 'LIKE', "%{$search}%");
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString()),
+
+            'searchTerm' => $request->search,
         ]);
     }
 

@@ -39,7 +39,7 @@
             <!-- Confirm Password -->
             <TextInput type="password" name="Confirm Password" v-model="form.password_confirmation"/>
 
-            <button type="submit" :class="form.processing ? 'cursor-not-allowed opacity-50' : ''" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" :disabled="form.processing">Register</button>
+            <button type="submit" :class="form.processing ? 'cursor-not-allowed opacity-50' : ''" class="text-white bg-green-400 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-500 dark:focus:ring-green-600" :disabled="form.processing">Register</button>
         </form>
 
     </Authenticate>
@@ -68,7 +68,7 @@ const change = (e) => {
 
 const submit = () => {
     form.post(route("register.attempt"), {
-        onError: () => form.reset('password', 'password_confirmation'),
+        onFinish: () => form.reset('password', 'password_confirmation'),
     });
 }
 

@@ -5,9 +5,15 @@ defineProps({
 </script>
 
 <template>
-    <div class="flex items-center justify-between mt-3">
+    <div v-if="links.meta.from" class="flex items-center justify-between mt-3">
         <div>
-            Showing <span>{{links.meta.from}}</span> to <span>{{links.meta.to}}</span> of <span>{{links.meta.total}}</span> results
+            Showing
+            <span class="font-bold">{{links.meta.from}}</span>
+            to
+            <span class="font-bold">{{links.meta.to}}</span>
+            of
+            <span class="font-bold">{{links.meta.total}}</span>
+            results
         </div>
         <div>
             <Component
@@ -15,8 +21,8 @@ defineProps({
                 v-for="link in links.meta.links"
                 :href="link.url"
                 v-html="link.label"
-                class="px-1"
-                :class="{'text-gray-400' : !link.url, 'font-bold text-green-500' : link.active}"
+                class="px-2 border border-green-400 rounded-md mx-1 hover:bg-green-400 hover:text-white"
+                :class="{'text-gray-400 border-gray-400 hover:bg-gray-400 cursor-not-allowed' : !link.url, 'font-bold text-white bg-green-400 rounded-md' : link.active}"
             />
         </div>
     </div>

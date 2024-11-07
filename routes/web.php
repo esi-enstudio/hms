@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function (){
     Route::inertia('/', 'Main')->name('home');
-    Route::resource('user', UserController::class);
+    Route::resource('/user', UserController::class);
 
 //    Route::inertia('/user', 'User', [
 //        'users' => UserResource::collection(User::latest()->paginate(10))
