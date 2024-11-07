@@ -3,7 +3,7 @@
         <Authenticate>
             <Head :title="`${$page.component} |`"/>
 
-            <table>
+            <table class="w-full">
                 <thead>
                 <tr>
                     <th>SL</th>
@@ -34,12 +34,17 @@
                 </tr>
                 </tbody>
             </table>
+
+            <Pagination :links="users"/>
+
+
         </Authenticate>
     </div>
 </template>
 
 <script setup>
 import Authenticate from "@/Layouts/Authenticate.vue";
+import Pagination from "@/Components/Pagination.vue";
 
 defineProps({
     users: Object,
@@ -47,8 +52,5 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-table, th, td {
-    border: 1px solid black;
-    padding: 3px;
-}
+
 </style>
