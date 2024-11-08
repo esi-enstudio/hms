@@ -4,9 +4,13 @@
             <nav class="flex align-items-center justify-between bg-green-400 dark:bg-slate-800 p-3 text-white">
                 <!-- Main Menus -->
                 <ul v-if="$page.props.auth.user" class="flex align-items-center space-x-4">
-                    <li><Link :href="route('home')" class="hover:text-white" :class="{'text-white bg-green-500 rounded p-2' : $page.component === 'Main'}">Home</Link></li>
+                    <li>
+                        <NavLink routeName="home" componentName="Main">Home</NavLink>
+                    </li>
 
-                    <li><Link :href="route('user.index')" class="hover:text-white" :class="{'text-white bg-green-500 rounded p-2' : $page.component === 'User'}">Users</Link></li>
+                    <li>
+                        <NavLink routeName="user.index" componentName="User">Users</NavLink>
+                    </li>
                 </ul>
                 <div v-else></div>
 
@@ -33,7 +37,7 @@
             </nav>
         </header>
 
-        <main class="max-w-screen-xl mx-auto p-2">
+        <main class="max-w-screen-xl mx-auto py-2">
             <slot/>
         </main>
     </div>
@@ -42,6 +46,7 @@
 <script setup>
 
 import {switchTheme} from "@/theme.js";
+import NavLink from "@/Components/NavLink.vue";
 </script>
 
 <style lang="scss" scoped>

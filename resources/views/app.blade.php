@@ -15,7 +15,7 @@
     @inertiaHead
     @routes
 </head>
-<body class="font-RobotoCondensed bg-green-100 dark:bg-slate-700 dark:text-white">
+<body class="font-RobotoCondensed dark:bg-slate-700 dark:text-white">
 @inertia
 </body>
 </html>
