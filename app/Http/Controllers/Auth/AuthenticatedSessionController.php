@@ -19,8 +19,8 @@ class AuthenticatedSessionController extends Controller
     public function attempt(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
-            'phone' => ['required'],
-            'password' => ['required'],
+            'phone' => ['required','numeric'],
+            'password' => ['required','min:8'],
         ]);
 
         if (Auth::attempt($credentials, $request->remember)) {

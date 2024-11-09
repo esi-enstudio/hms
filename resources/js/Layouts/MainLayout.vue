@@ -3,7 +3,7 @@
         <header>
             <nav class="flex align-items-center justify-between bg-green-400 dark:bg-slate-800 p-3 text-white">
                 <!-- Main Menus -->
-                <ul v-if="$page.props.auth.user" class="flex align-items-center space-x-4">
+                <ul v-if="user" class="flex align-items-center space-x-4">
                     <li>
                         <NavLink routeName="home" componentName="Main">Home</NavLink>
                     </li>
@@ -14,13 +14,13 @@
                 </ul>
                 <div v-else></div>
 
-                <ul v-if="$page.props.auth.user" class="flex align-items-center space-x-4">
+                <ul v-if="user" class="flex align-items-center space-x-4">
                     <button @click="switchTheme" class="hover:bg-green-500 w-6 h-6 grid place-items-center rounded-full hover:outline outline-1 outline-green-500">
                         <i class="text-white fa-solid fa-circle-half-stroke"></i>
                     </button>
 
-                    <img class="w-[30px] rounded" :src="$page.props.auth.user.avatar ? ('storage/' + $page.props.auth.user.avatar) : ('https://icons.veryicon.com/png/o/miscellaneous/user-avatar/user-avatar-male-5.png')" alt="user image">
-                    <li><p class="font-semibold text-white">User: {{$page.props.auth.user.name}}</p></li>
+                    <img class="w-[30px] rounded" :src="user.avatar ? ('storage/' + user.avatar) : ('https://icons.veryicon.com/png/o/miscellaneous/user-avatar/user-avatar-male-5.png')" alt="user image">
+                    <li><p class="font-semibold text-white">User: {{ user.name }}</p></li>
                     <span>|</span>
                     <li><Link class="hover:text-white" :href="route('logout')" method="post" as="button">Logout</Link></li>
                 </ul>
@@ -44,9 +44,13 @@
 </template>
 
 <script setup>
-
 import {switchTheme} from "@/theme.js";
 import NavLink from "@/Components/NavLink.vue";
+import {usePage} from "@inertiajs/vue3";
+import {computed} from "vue";
+
+const page = usePage()
+const user = computed(() => page.props.auth.user)
 </script>
 
 <style lang="scss" scoped>

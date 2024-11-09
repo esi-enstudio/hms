@@ -1,28 +1,10 @@
-<template>
-        <Head title="Login |"/>
-
-        <form @submit.prevent="submit" class="max-w-md mt-5">
-            <!-- Phone Number -->
-            <TextInput name="Phone Number" v-model="form.phone" :message="form.errors.phone"/>
-
-            <!-- Password -->
-            <TextInput type="password" name="Password" v-model="form.password" :message="form.errors.password"/>
-
-            <div class="flex items-start mb-5">
-                <div class="flex items-center h-5">
-                    <input v-model="form.remember" id="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" />
-                </div>
-                <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
-            </div>
-
-            <button type="submit" :class="form.processing ? 'cursor-not-allowed opacity-50' : ''" class="text-white bg-green-400 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-400 dark:hover:bg-green-500 dark:focus:ring-green-600" :disabled="form.processing">Log In</button>
-        </form>
-</template>
-
 <script setup>
 import { useForm } from "@inertiajs/vue3";
 import TextInput from "@/Components/TextInput.vue";
-
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import Container from "@/Components/Container.vue";
+import TextLink from "@/Components/TextLink.vue";
+import CheckBox from "@/Components/CheckBox.vue";
 
 const form = useForm({
     phone: null,
@@ -32,8 +14,43 @@ const form = useForm({
 
 const submit = () => {
     form.post(route("login.attempt"), {
-        onError: () => form.reset('password'),
+        onFinish: () => form.reset('password'),
     });
 }
 
 </script>
+
+<template>
+    <Head title="Login |"/>
+
+    <Container class="w-1/2">
+        <h1 class="text-3xl mb-4 text-center">Login</h1>
+
+        <form @submit.prevent="submit" class="space-y-6">
+            <!-- Phone Number -->
+            <TextInput
+                label="Phone Number"
+                icon="mobile-screen-button"
+                v-model="form.phone"
+                :message="form.errors.phone"
+            />
+
+            <!-- Password -->
+            <TextInput
+                label="Password"
+                icon="lock"
+                type="password"
+                v-model="form.password"
+                :message="form.errors.password"
+            />
+
+            <div class="flex items-center justify-between">
+                <CheckBox name="remember" v-model="form.remember">Remember me</CheckBox>
+
+                <TextLink label="Forgot Password" routeName="home"/>
+            </div>
+
+            <PrimaryButton :disable="form.processing">Log In</PrimaryButton>
+        </form>
+    </Container>
+</template>

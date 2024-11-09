@@ -22,11 +22,11 @@ class RegisterUserController extends Controller
     {
         // Validation
         $attributes = $request->validate([
-            'avatar' => ['nullable','image','max:300'],
-            'name' => ['required'],
-            'email' => ['required','unique:users,email'],
-            'phone' => ['required','unique:users,phone'],
-            'password' => ['required', 'confirmed'],
+            'avatar'    => ['nullable','image','max:300'],
+            'name'      => ['required','max:150'],
+            'email'     => ['required','lowercase','max:255','unique:users,email'],
+            'phone'     => ['required','numeric','unique:users,phone'],
+            'password'  => ['required','min:8','confirmed'],
         ]);
 
         if ($request->hasFile('avatar'))

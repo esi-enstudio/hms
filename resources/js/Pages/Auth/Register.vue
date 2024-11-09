@@ -4,7 +4,6 @@ import TextInput from "@/Components/TextInput.vue";
 import Container from "@/Components/Container.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 
-
 const form = useForm({
     name: null,
     phone: null,
@@ -32,6 +31,8 @@ const submit = () => {
     <Head title="Register |"/>
 
     <Container class="w-1/2">
+        <h1 class="text-3xl mb-4 text-center">Registration</h1>
+
         <form @submit.prevent="submit" class="space-y-6">
 
             <!-- Upload Avatar -->
