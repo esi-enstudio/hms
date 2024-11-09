@@ -13,7 +13,7 @@ class AuthenticatedSessionController extends Controller
 {
     public function index(): Response|ResponseFactory
     {
-        return inertia('Auth/Login');
+        return inertia('Auth/Login', ['status' => session('status')]);
     }
 
     public function attempt(Request $request): RedirectResponse
@@ -26,7 +26,7 @@ class AuthenticatedSessionController extends Controller
         if (Auth::attempt($credentials, $request->remember)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            return to_route('home');
         }
 
         return back()->withErrors([

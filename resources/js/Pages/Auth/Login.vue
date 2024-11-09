@@ -5,12 +5,15 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import Container from "@/Components/Container.vue";
 import TextLink from "@/Components/TextLink.vue";
 import CheckBox from "@/Components/CheckBox.vue";
+import SessionMessage from "@/Components/SessionMessage.vue";
 
 const form = useForm({
     phone: null,
     password: null,
     remember: null,
 });
+
+defineProps({ status: String })
 
 const submit = () => {
     form.post(route("login.attempt"), {
@@ -24,6 +27,8 @@ const submit = () => {
     <Head title="Login |"/>
 
     <Container class="w-1/2">
+        <SessionMessage :status="status"/>
+
         <h1 class="text-3xl mb-4 text-center">Login</h1>
 
         <form @submit.prevent="submit" class="space-y-6">
@@ -47,7 +52,7 @@ const submit = () => {
             <div class="flex items-center justify-between">
                 <CheckBox name="remember" v-model="form.remember">Remember me</CheckBox>
 
-                <TextLink label="Forgot Password" routeName="home"/>
+                <TextLink label="Forgot Password" routeName="password.request"/>
             </div>
 
             <PrimaryButton :disable="form.processing">Log In</PrimaryButton>
