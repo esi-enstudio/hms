@@ -1,43 +1,73 @@
 <template>
     <div>
+        <div v-show="userMenu" @click="userMenu = false" class="fixed inset-0 z-40"></div>
         <header>
-            <nav class="flex align-items-center justify-between bg-green-400 dark:bg-slate-800 p-3 text-white">
-                <!-- Main Menus -->
-                <ul v-if="user" class="flex align-items-center space-x-4">
-                    <li>
+            <nav class="flex justify-between bg-green-400 dark:bg-slate-800 text-white px-3 py-1">
+                <!-- Left Menus -->
+                <div v-if="user" class="flex items-center space-x-3">
+                    <div class="relative">
                         <NavLink routeName="home" componentName="Main">Home</NavLink>
-                    </li>
+                        <div class="absolute bg-red-400 top-11">
+                            <a href="#" class="block">Drop 1</a>
+                            <a href="#" class="block">Drop 1</a>
+                            <a href="#" class="block">Drop 1</a>
+                            <a href="#" class="block">Drop 1</a>
+                        </div>
+                    </div>
 
-                    <li>
-                        <NavLink routeName="user.index" componentName="User">Users</NavLink>
-                    </li>
-                </ul>
+
+
+                    <NavLink routeName="user.index" componentName="User">Users</NavLink>
+                </div>
+
                 <div v-else></div>
 
-                <ul v-if="user" class="flex align-items-center space-x-4">
+                <!-- Right Menus -->
+                <div class="flex items-center space-x-4">
+                    <!-- Dark/Light Mode -->
                     <button @click="switchTheme" class="hover:bg-green-500 w-6 h-6 grid place-items-center rounded-full hover:outline outline-1 outline-green-500">
                         <i class="text-white fa-solid fa-circle-half-stroke"></i>
                     </button>
 
-                    <img class="w-[30px] rounded" :src="user.avatar ? ('storage/' + user.avatar) : ('https://icons.veryicon.com/png/o/miscellaneous/user-avatar/user-avatar-male-5.png')" alt="user image">
-                    <li><p class="font-semibold text-white">User: {{ user.name }}</p></li>
-                    <span>|</span>
-                    <li><Link class="hover:text-white" :href="route('logout')" method="post" as="button">Logout</Link></li>
-                </ul>
+                    <div>
+                        <!-- Auth Menus -->
+                        <div v-if="user" class="flex items-center space-x-3">
+                            <!-- Auth User Image -->
+                            <img class="w-[30px] rounded-md" :src="user.avatar ? ('storage/' + user.avatar) : ('https://icons.veryicon.com/png/o/miscellaneous/user-avatar/user-avatar-male-5.png')" alt="user image">
 
-                <ul v-else class="flex align-items-center space-x-4">
-                    <button @click="switchTheme" class="hover:bg-green-500 w-6 h-6 grid place-items-center rounded-full hover:outline outline-1 outline-green-500">
-                        <i class="text-white fa-solid fa-circle-half-stroke"></i>
-                    </button>
+                            <div class="relative">
+                                <!-- Auth User Name -->
+                                <div @click="userMenu = !userMenu"
+                                    :class="{'bg-green-500' : userMenu}"
+                                    class="flex items-center gap-2 px-3 py-1 rounded-md hover:bg-green-500 cursor-pointer">
+                                    <p class="font-semibold text-white">User: {{ user.name }}</p>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </div>
 
-                    <li><Link :href="route('login')" class="hover:text-white" :class="{'text-white bg-green-500 rounded p-2' : $page.component === 'Auth/Login'}">Login</Link></li>
-                    <span>|</span>
-                    <li><Link :href="route('register')" class="hover:text-white" :class="{'text-white bg-green-500 rounded p-2' : $page.component === 'Auth/Register'}">Register</Link></li>
-                </ul>
+                                <!-- Dropdown Menu -->
+                                <div v-show="userMenu" @click="userMenu = false" class="absolute z-50 top-12 right-0 bg-green-600 rounded-md border-green-400 border overflow-hidden w-40">
+                                    <p class="w-full text-left px-3 py-2">Dashboard</p>
+                                    <Link class="w-full text-left px-3 py-1" :href="route('logout')" method="post" as="button">Logout</Link>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <!-- Guest Menus -->
+                        <div v-else class="flex items-center space-x-3">
+                            <Link :href="route('login')" :class="{'text-white bg-green-500 rounded-md px-2 py-1' : $page.component === 'Auth/Login'}">Login</Link>
+
+                            <span>|</span>
+
+                            <Link :href="route('register')" :class="{'text-white bg-green-500 rounded-md px-2 py-1' : $page.component === 'Auth/Register'}">Register</Link>
+                        </div>
+                    </div>
+                </div>
             </nav>
         </header>
 
-        <main class="max-w-screen-xl mx-auto py-2">
+        <main class="max-w-screen-xl mx-auto p-3">
             <slot/>
         </main>
     </div>
@@ -47,10 +77,11 @@
 import {switchTheme} from "@/theme.js";
 import NavLink from "@/Components/NavLink.vue";
 import {usePage} from "@inertiajs/vue3";
-import {computed} from "vue";
+import {computed, ref} from "vue";
 
 const page = usePage()
 const user = computed(() => page.props.auth.user)
+const userMenu = ref()
 </script>
 
 <style lang="scss" scoped>
