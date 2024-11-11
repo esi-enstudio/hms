@@ -11,13 +11,13 @@
             </div>
         </div>
 
-        <Container>Home Page...</Container>
+        <AppLayout>Home Page...</AppLayout>
     </div>
 </template>
 
 <script setup>
 
-import Container from "@/Components/Container.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
 </script>
 
 <style lang="scss" scoped>

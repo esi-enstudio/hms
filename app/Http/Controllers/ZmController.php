@@ -2,18 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ZmResource;
 use App\Models\Zm;
 use App\Http\Requests\StoreZmRequest;
 use App\Http\Requests\UpdateZmRequest;
+use Illuminate\Http\Request;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class ZmController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): Response|ResponseFactory
     {
-        //
+        return inertia('Zm/Index', [
+            'zms' => ZmResource::collection(Zm::when($request->search,function ($query, $search){
+                $query->where('name', 'LIKE', "%{$search}%")
+                    ->orWhere('number', 'LIKE', "%{$search}%")
+                    ->orWhere('designation', 'LIKE', "%{$search}%");
+            })
+                ->latest()
+                ->paginate(5)
+                ->withQueryString()),
+
+            'searchTerm' => $request->search,
+        ]);
     }
 
     /**

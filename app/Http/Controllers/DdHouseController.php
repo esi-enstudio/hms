@@ -18,7 +18,7 @@ class DdHouseController extends Controller
      */
     public function index(Request $request): Response|ResponseFactory
     {
-        return inertia('DdHouse', [
+        return inertia('DdHouse/Index', [
             'ddHouses' => DdHouseResource::collection(DdHouse::when($request->search,function ($query, $search){
                 $query->where('name', 'LIKE', "%{$search}%")
                     ->orWhere('code', 'LIKE', "%{$search}%");

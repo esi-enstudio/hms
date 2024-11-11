@@ -1,6 +1,10 @@
 <template>
-    <div>
-        <Head :title="`${$page.component} |`"/>
+    <Head :title="'All User |'"/>
+
+    <AppLayout>
+        <template #header>
+            <p>Users</p>
+        </template>
 
         <div class="flex items-center justify-between mb-3">
             <Link class="border border-green-400 px-4 py-2 rounded-lg hover:bg-green-400 hover:text-white">
@@ -43,7 +47,8 @@
         </table>
 
         <Pagination :links="users"/>
-    </div>
+
+    </AppLayout>
 </template>
 
 <script setup>
@@ -51,6 +56,7 @@ import Pagination from "@/Components/Pagination.vue";
 import {ref, watch} from "vue";
 import {router} from "@inertiajs/vue3";
 import {debounce} from "lodash";
+import AppLayout from "@/Layouts/AppLayout.vue";
 
 const props = defineProps({
     users: Object,

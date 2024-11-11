@@ -1,8 +1,8 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
 import TextInput from "@/Components/TextInput.vue";
-import Container from "@/Components/Container.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
 
 const props = defineProps({
     email: String,
@@ -27,7 +27,7 @@ const submit = () => {
 <template>
     <Head title="Reset Password |"/>
 
-    <Container class="w-1/2">
+    <AppLayout class="w-1/2">
         <form @submit.prevent="submit" class="space-y-6">
 
             <!-- Email -->
@@ -58,5 +58,5 @@ const submit = () => {
             <!-- Submit Button -->
             <PrimaryButton :disable="form.processing">Reset Password</PrimaryButton>
         </form>
-    </Container>
+    </AppLayout>
 </template>

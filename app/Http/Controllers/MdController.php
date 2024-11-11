@@ -2,18 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\MdResource;
 use App\Models\Md;
 use App\Http\Requests\StoreMdRequest;
 use App\Http\Requests\UpdateMdRequest;
+use Illuminate\Http\Request;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class MdController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): Response|ResponseFactory
     {
-        //
+        return inertia('Md/Index', [
+            'mds' => MdResource::collection(Md::when($request->search,function ($query, $search){
+                $query->where('name', 'LIKE', "%{$search}%")
+                    ->orWhere('number', 'LIKE', "%{$search}%");
+            })
+                ->latest()
+                ->paginate(5)
+                ->withQueryString()),
+
+            'searchTerm' => $request->search,
+        ]);
     }
 
     /**

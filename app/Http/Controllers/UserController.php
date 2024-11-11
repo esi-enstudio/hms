@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index(Request $request): Response|ResponseFactory
     {
-        return inertia('User', [
+        return inertia('User/Index', [
             'users' => UserResource::collection(User::when($request->search,function ($query, $search){
                 $query->where('name', 'LIKE', "%{$search}%")
                 ->orWhere('email', 'LIKE', "%{$search}%")
