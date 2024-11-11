@@ -5,7 +5,8 @@ namespace App\Models;
  use Database\Factories\UserFactory;
  use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+ use Illuminate\Database\Eloquent\Relations\HasOne;
+ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 /**
@@ -52,5 +53,95 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Relationship with Zm model
+     *
+     * @return HasOne
+     */
+    public function zm(): HasOne
+    {
+        return $this->hasOne(Zm::class);
+    }
+
+    /**
+     * Relationship with Md model
+     *
+     * @return HasOne
+     */
+    public function md(): HasOne
+    {
+        return $this->hasOne(Md::class);
+    }
+
+    /**
+     * Relationship with Manager model
+     *
+     * @return HasOne
+     */
+    public function manager(): HasOne
+    {
+        return $this->hasOne(Manager::class);
+    }
+
+    /**
+     * Relationship with Supervisor model
+     *
+     * @return HasOne
+     */
+    public function supervisor(): HasOne
+    {
+        return $this->hasOne(Supervisor::class);
+    }
+
+    /**
+     * Relationship with Rso model
+     *
+     * @return HasOne
+     */
+    public function rso(): HasOne
+    {
+        return $this->hasOne(Rso::class);
+    }
+
+    /**
+     * Relationship with Retailer model
+     *
+     * @return HasOne
+     */
+    public function retailer(): HasOne
+    {
+        return $this->hasOne(Retailer::class);
+    }
+
+    /**
+     * Relationship with Bp model
+     *
+     * @return HasOne
+     */
+    public function bp(): HasOne
+    {
+        return $this->hasOne(Bp::class);
+    }
+
+    /**
+     * Relationship with Account model
+     *
+     * @return HasOne
+     */
+    public function account(): HasOne
+    {
+        return $this->hasOne(Account::class);
+    }
+
+    /**
+     * Relationship with DmsOperator model
+     *
+     * @return HasOne
+     */
+    public function dmsOperator(): HasOne
+    {
+        return $this->hasOne(DmsOperator::class);
     }
 }

@@ -4,6 +4,7 @@ use App\Models\DdHouse;
 use App\Models\Manager;
 use App\Models\Rso;
 use App\Models\Supervisor;
+use App\Models\User;
 use App\Models\Zm;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,6 +20,7 @@ return new class extends Migration
         Schema::create('retailers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(DdHouse::class);
+            $table->foreignIdFor(User::class);
             $table->foreignIdFor(Zm::class);
             $table->foreignIdFor(Manager::class);
             $table->foreignIdFor(Supervisor::class);

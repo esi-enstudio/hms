@@ -2,6 +2,7 @@
 
 use App\Models\DdHouse;
 use App\Models\Manager;
+use App\Models\User;
 use App\Models\Zm;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,6 +18,7 @@ return new class extends Migration
         Schema::create('bps', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(DdHouse::class);
+            $table->foreignIdFor(User::class);
             $table->foreignIdFor(Zm::class);
             $table->foreignIdFor(Manager::class);
             $table->string('employee_code')->nullable();

@@ -17,7 +17,8 @@ class DdHouseFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'code' => fake()->postcode(),
+            'name' => fake()->name(),
         ];
     }
 }
