@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Md;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Md>
+ * @extends Factory<Md>
  */
 class MdFactory extends Factory
 {
@@ -17,7 +18,9 @@ class MdFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => fake()->numberBetween(1, 300),
+            'name' => fake()->name(),
+            'number' => fake()->e164PhoneNumber,
         ];
     }
 }

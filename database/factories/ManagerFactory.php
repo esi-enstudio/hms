@@ -17,7 +17,10 @@ class ManagerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'dd_house_id' => fake()->numberBetween(1, 3),
+            'user_id' => fake()->numberBetween(1, 300),
+            'name' => fake()->name(),
+            'number' => fake()->e164PhoneNumber,
         ];
     }
 }

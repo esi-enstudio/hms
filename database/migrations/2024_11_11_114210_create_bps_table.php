@@ -2,6 +2,7 @@
 
 use App\Models\DdHouse;
 use App\Models\Manager;
+use App\Models\Supervisor;
 use App\Models\User;
 use App\Models\Zm;
 use Illuminate\Database\Migrations\Migration;
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Zm::class);
             $table->foreignIdFor(Manager::class);
+            $table->foreignIdFor(Supervisor::class);
             $table->string('employee_code')->nullable();
             $table->string('name');
             $table->string('number');

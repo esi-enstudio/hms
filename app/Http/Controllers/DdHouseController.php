@@ -2,18 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DdHouseResource;
+use App\Http\Resources\UserResource;
 use App\Models\DdHouse;
 use App\Http\Requests\StoreDdHouseRequest;
 use App\Http\Requests\UpdateDdHouseRequest;
+use Illuminate\Http\Request;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class DdHouseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): Response|ResponseFactory
     {
-        //
+        return inertia('DdHouse', [
+            'ddHouses' => DdHouseResource::collection(DdHouse::when($request->search,function ($query, $search){
+                $query->where('name', 'LIKE', "%{$search}%")
+                    ->orWhere('code', 'LIKE', "%{$search}%");
+            })
+                ->latest()
+                ->paginate(5)
+                ->withQueryString()),
+
+            'searchTerm' => $request->search,
+        ]);
     }
 
     /**

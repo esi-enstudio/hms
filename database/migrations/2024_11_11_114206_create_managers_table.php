@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('dob')->nullable();
             $table->string('nid')->nullable();
             $table->string('gender')->nullable();
+            $table->string('designation')->default('manager');
             $table->boolean('status')->default(false);
             $table->string('remarks')->nullable();
             $table->timestamp('resign_date')->nullable();

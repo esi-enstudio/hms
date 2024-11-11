@@ -2,22 +2,74 @@
     <div>
         <div v-show="userMenu" @click="userMenu = false" class="fixed inset-0 z-40"></div>
         <header>
-            <nav class="flex justify-between bg-green-400 dark:bg-slate-800 text-white px-3 py-1">
+            <nav class="flex justify-between bg-green-400 dark:bg-slate-800 text-white px-3 space-x-1">
                 <!-- Left Menus -->
-                <div v-if="user" class="flex items-center space-x-3">
+                <div v-if="user" class="flex items-center">
+
+                    <!-- Home Menu -->
                     <div class="relative">
                         <NavLink routeName="home" componentName="Main">Home</NavLink>
-                        <div class="absolute bg-red-400 top-11">
-                            <a href="#" class="block">Drop 1</a>
-                            <a href="#" class="block">Drop 1</a>
-                            <a href="#" class="block">Drop 1</a>
-                            <a href="#" class="block">Drop 1</a>
-                        </div>
                     </div>
 
+                    <div>
+                        <NavLink routeName="user.index" componentName="User">Users</NavLink>
+                    </div>
 
+                    <!-- Category Menu -->
+                    <div class="relative">
+                        <p class="px-3 py-1 rounded-md hover:bg-green-500 cursor-pointer"
+                           @click="categoryMenu = !categoryMenu"
+                           :class="{'bg-green-500' : categoryMenu, 'bg-green-500' : $page.component === 'DdHouse'}">Category</p>
 
-                    <NavLink routeName="user.index" componentName="User">Users</NavLink>
+                        <!-- Dropdown Menu -->
+                        <div v-show="categoryMenu" @click="categoryMenu = false" class="absolute z-50 top-9 left-0 bg-green-600 rounded-md border-green-400 border overflow-hidden w-40">
+
+                            <!-- Dd House -->
+                            <Link @click="categoryMenu = !categoryMenu"
+                                  class="block text-left px-3 py-1 hover:opacity-50"
+                                  :href="route('ddHouse.index')">DD House</Link>
+
+                            <!-- ZM -->
+                            <Link @click="categoryMenu = !categoryMenu"
+                                  class="block text-left px-3 py-1 hover:opacity-50"
+                                  :href="route('zm.index')">ZM</Link>
+
+                            <!-- Manager -->
+                            <Link @click="categoryMenu = !categoryMenu"
+                                  class="block text-left px-3 py-1 hover:opacity-50"
+                                  :href="route('manager.index')">Manager</Link>
+
+                            <!-- Supervisor -->
+                            <Link @click="categoryMenu = !categoryMenu"
+                                  class="block text-left px-3 py-1 hover:opacity-50"
+                                  :href="route('supervisor.index')">Supervisor</Link>
+
+                            <!-- Rso -->
+                            <Link @click="categoryMenu = !categoryMenu"
+                                  class="block text-left px-3 py-1 hover:opacity-50"
+                                  :href="route('rso.index')">Rso</Link>
+
+                            <!-- Bp -->
+                            <Link @click="categoryMenu = !categoryMenu"
+                                  class="block text-left px-3 py-1 hover:opacity-50"
+                                  :href="route('bp.index')">Bp</Link>
+
+                            <!-- Retailer -->
+                            <Link @click="categoryMenu = !categoryMenu"
+                                  class="block text-left px-3 py-1 hover:opacity-50"
+                                  :href="route('retailer.index')">Retailer</Link>
+
+                            <!-- Account -->
+                            <Link @click="categoryMenu = !categoryMenu"
+                                  class="block text-left px-3 py-1 hover:opacity-50"
+                                  :href="route('account.index')">Account</Link>
+
+                            <!-- Dms Operator -->
+                            <Link @click="categoryMenu = !categoryMenu"
+                                  class="block text-left px-3 py-1 hover:opacity-50"
+                                  :href="route('dmsOperator.index')">Dms Operator</Link>
+                        </div>
+                    </div>
                 </div>
 
                 <div v-else></div>
@@ -45,7 +97,7 @@
                                 </div>
 
                                 <!-- Dropdown Menu -->
-                                <div v-show="userMenu" @click="userMenu = false" class="absolute z-50 top-12 right-0 bg-green-600 rounded-md border-green-400 border overflow-hidden w-40">
+                                <div v-show="userMenu" @click="userMenu = false" class="absolute z-50 top-9 right-0 bg-green-600 rounded-md border-green-400 border overflow-hidden w-40">
                                     <p class="w-full text-left px-3 py-2">Dashboard</p>
                                     <Link class="w-full text-left px-3 py-1" :href="route('logout')" method="post" as="button">Logout</Link>
                                 </div>
@@ -82,6 +134,7 @@ import {computed, ref} from "vue";
 const page = usePage()
 const user = computed(() => page.props.auth.user)
 const userMenu = ref()
+const categoryMenu = ref()
 </script>
 
 <style lang="scss" scoped>

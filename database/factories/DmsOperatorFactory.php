@@ -17,7 +17,9 @@ class DmsOperatorFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => fake()->numberBetween(1, 300),
+            'name' => fake()->name(),
+            'number' => fake()->e164PhoneNumber,
         ];
     }
 }

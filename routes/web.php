@@ -10,16 +10,16 @@ Route::middleware(['auth','verified'])->group(function (){
 });
 
 Route::resources([
-    'ddHouse'       => \App\Models\DdHouse::class,
-    'md'            => \App\Models\Md::class,
-    'zm'            => \App\Models\Zm::class,
-    'manager'       => \App\Models\Manager::class,
-    'supervisor'    => \App\Models\Supervisor::class,
-    'rso'           => \App\Models\Rso::class,
-    'retailer'      => \App\Models\Retailer::class,
-    'bp'            => \App\Models\Bp::class,
-    'account'       => \App\Models\Account::class,
-    'dmsOperator'   => \App\Models\DmsOperator::class,
+    'ddHouse'       => \App\Http\Controllers\DdHouseController::class,
+    'md'            => \App\Http\Controllers\MdController::class,
+    'zm'            => \App\Http\Controllers\ZmController::class,
+    'manager'       => \App\Http\Controllers\ManagerController::class,
+    'supervisor'    => \App\Http\Controllers\SupervisorController::class,
+    'rso'           => \App\Http\Controllers\RsoController::class,
+    'retailer'      => \App\Http\Controllers\RetailerController::class,
+    'bp'            => \App\Http\Controllers\BpController::class,
+    'account'       => \App\Http\Controllers\AccountController::class,
+    'dmsOperator'   => \App\Http\Controllers\DmsOperatorController::class,
 ]);
 
 
