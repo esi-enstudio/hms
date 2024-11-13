@@ -11,6 +11,8 @@
         </div>
 
         <form @submit.prevent="form.post(route('user.store'))">
+            <!-- Full Name -->
+            <ImageUpload/>
 
             <!-- Full Name -->
             <TextInput
@@ -83,6 +85,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import TextInput from "@/Components/TextInput.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import Select from "@/Components/Select.vue";
+import ImageUpload from "@/Components/ImageUpload.vue";
 
 const form = useForm({
     avatar: null,
