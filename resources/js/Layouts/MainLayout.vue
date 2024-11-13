@@ -19,11 +19,12 @@
                        :class="{'bg-green-500' : categoryMenu, 'bg-green-500' : $page.component === 'DdHouse'}">Category</p>
 
                     <!-- Dropdown Menu -->
-                    <div v-show="categoryMenu" @click="categoryMenu = false" class="absolute z-50 top-9 left-0 bg-green-600 rounded-md border-green-400 border overflow-hidden w-40">
+                    <div v-show="categoryMenu" @click="categoryMenu = false" class="absolute z-50 top-9 left-0 bg-green-600 rounded-md border-green-400 dark:bg-slate-800 border overflow-hidden w-40">
 
                         <!-- User -->
                         <Link @click="categoryMenu = !categoryMenu"
                               class="block text-left px-3 py-1 hover:opacity-50"
+                              :class="{'opacity-50' : $page.component === 'User/*'}"
                               :href="route('user.index')">Users</Link>
 
                         <!-- Dd House -->
@@ -104,7 +105,7 @@
                             </div>
 
                             <!-- Dropdown Menu -->
-                            <div v-show="userMenu" @click="userMenu = false" class="absolute z-50 top-9 right-0 bg-green-600 rounded-md border-green-400 border overflow-hidden w-40">
+                            <div v-show="userMenu" @click="userMenu = false" class="absolute z-50 top-9 right-0 dark:bg-slate-800 bg-green-600 rounded-md border-green-400 border overflow-hidden w-40">
                                 <p class="w-full text-left px-3 py-2">Dashboard</p>
                                 <Link class="w-full text-left px-3 py-1" :href="route('logout')" method="post" as="button">Logout</Link>
                             </div>

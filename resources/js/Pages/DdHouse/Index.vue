@@ -38,7 +38,7 @@
                 <td class="text-center space-x-2">
                     <Link :href="route('ddHouse.show', ddHouse.id)" class="hover:text-green-400">Show</Link>
                     <Link :href="route('ddHouse.edit', ddHouse.id)" class="hover:text-green-400">Edit</Link>
-                    <span>Delete</span>
+                    <button class="hover:text-red-500" @click="delHouse(ddHouse.id, ddHouse.name)">Delete</button>
                 </td>
             </tr>
             </tbody>
@@ -69,6 +69,14 @@ watch(search, debounce(
     (query) => router.get('/ddHouse', { search: query }, { preserveState:true }),
     500
 ))
+
+const delHouse = (id, name) => {
+
+    if (confirm(`Are you sure to delete "${name}" house?`))
+    {
+        router.delete(route('ddHouse.destroy', id));
+    }
+}
 
 </script>
 

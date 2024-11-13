@@ -1,6 +1,4 @@
 <template>
-    {{console.log(users)}}
-
     <Head :title="'All User |'"/>
 
     <AppLayout>
@@ -9,7 +7,7 @@
         </template>
 
         <div class="flex items-center justify-between mb-3">
-            <Link class="border border-green-400 px-4 py-2 rounded-lg hover:bg-green-400 hover:text-white">
+            <Link :href="route('user.create')" class="border border-green-400 px-4 py-2 rounded-lg hover:bg-green-400 hover:text-white">
                 Add New
             </Link>
 

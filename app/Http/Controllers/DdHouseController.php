@@ -29,6 +29,7 @@ class DdHouseController extends Controller
                 ->withQueryString()),
 
             'searchTerm' => $request->search,
+            'status' => session('msg'),
         ]);
     }
 
@@ -125,8 +126,10 @@ class DdHouseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DdHouse $ddHouse)
+    public function destroy(DdHouse $ddHouse): RedirectResponse
     {
-        //
+        $ddHouse->delete();
+
+        return to_route('ddHouse.index')->with('msg', 'DD house deleted successfully.');
     }
 }

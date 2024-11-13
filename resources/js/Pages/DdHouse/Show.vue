@@ -3,7 +3,7 @@
 
     <AppLayout>
         <template #header>
-            <p>House Details</p>
+            <p><span class="italic">"{{ddHouse.name}}"</span> House Details</p>
         </template>
 
         <div class="mb-4 text-right">
