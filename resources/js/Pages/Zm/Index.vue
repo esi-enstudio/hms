@@ -18,6 +18,7 @@
             <thead>
             <tr>
                 <th>SL</th>
+                <th>User Name</th>
                 <th>Name</th>
                 <th>Number</th>
                 <th>Designation</th>
@@ -29,6 +30,7 @@
             <tbody>
             <tr v-for="(zm, i) in zms.data" :key="zm.id">
                 <td>{{++i}}</td>
+                <td>{{zm.user.name}}</td>
                 <td>{{zm.name}}</td>
                 <td>{{zm.number}}</td>
                 <td>{{zm.designation}}</td>
@@ -39,6 +41,8 @@
         </table>
 
         <Pagination :links="zms"/>
+
+        {{console.log(zms)}}
 
     </AppLayout>
 </template>

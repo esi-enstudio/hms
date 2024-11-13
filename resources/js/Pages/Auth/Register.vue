@@ -2,7 +2,7 @@
 import { useForm } from "@inertiajs/vue3";
 import TextInput from "@/Components/TextInput.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import AppLayout from "@/Layouts/AppLayout.vue";
+import Container from "@/Components/Container.vue";
 
 const form = useForm({
     name: null,
@@ -30,7 +30,7 @@ const submit = () => {
 <template>
     <Head title="Register |"/>
 
-    <AppLayout class="w-1/2">
+    <Container class="w-1/2">
         <h1 class="text-3xl mb-4 text-center">Registration</h1>
 
         <form @submit.prevent="submit" class="space-y-6">
@@ -99,5 +99,5 @@ const submit = () => {
             <!-- Submit Button -->
             <PrimaryButton :disable="form.processing">Register</PrimaryButton>
         </form>
-    </AppLayout>
+    </Container>
 </template>

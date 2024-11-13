@@ -16,14 +16,15 @@ class UserResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'avatar' => $this->avatar,
-            'name' => $this->name,
-            'email' => $this->email,
-            'phone' => $this->phone,
-            'role' => $this->role,
-            'status' => $this->status,
-            'created' => Carbon::parse($this->created_at)->toDayDateTimeString(),
-            'updated' => Carbon::parse($this->updated_at)->toDayDateTimeString(),
+            'id'        => $this->id,
+            'avatar'    => $this->avatar,
+            'name'      => $this->name,
+            'email'     => $this->email,
+            'phone'     => $this->phone,
+            'role'      => $this->role,
+            'status'    => $this->status,
+            'created'   => Carbon::parse($this->created_at)->toDayDateTimeString(),
+            'updated'   => Carbon::parse($this->updated_at)->toDayDateTimeString(),
         ];
     }
 }

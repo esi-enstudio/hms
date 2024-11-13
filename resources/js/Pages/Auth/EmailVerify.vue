@@ -1,7 +1,7 @@
 <template>
     <Head title="Email Verification |"/>
 
-    <AppLayout class="w-1/2">
+    <Container class="w-1/2">
         <div class="mb-4 text-sm text-gray-600">
             Thanks for signing up! Before getting started, could you verify your
             email address by clicking on the link we just emailed to you? If you
@@ -17,14 +17,14 @@
         </form>
 
         <p class="text-green-400 mt-3" v-if="status">{{ status }}</p>
-    </AppLayout>
+    </Container>
 </template>
 
 <script setup>
 
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import {useForm} from "@inertiajs/vue3";
-import AppLayout from "@/Layouts/AppLayout.vue";
+import Container from "@/Components/Container.vue";
 
 const form = useForm({})
 

@@ -1,4 +1,6 @@
 <template>
+    {{console.log(users)}}
+
     <Head :title="'All User |'"/>
 
     <AppLayout>

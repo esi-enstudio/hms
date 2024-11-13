@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method static latest()
+ * @method static create(array $attributes)
  */
 class DdHouse extends Model
 {

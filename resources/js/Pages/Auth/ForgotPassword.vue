@@ -3,7 +3,7 @@ import { useForm } from "@inertiajs/vue3";
 import TextInput from "@/Components/TextInput.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import SessionMessage from "@/Components/SessionMessage.vue";
-import AppLayout from "@/Layouts/AppLayout.vue";
+import Container from "@/Components/Container.vue";
 
 const form = useForm({
     email: null,
@@ -20,7 +20,7 @@ const submit = () => {
 <template>
     <Head title="Forgot Password |"/>
 
-    <AppLayout class="w-1/2">
+    <Container class="w-1/2">
         <div class="mb-4 text-sm text-gray-600">
             Forgot your password? No problem. Just let us know your email
             address and we will email you a password reset link that will allow
@@ -42,5 +42,5 @@ const submit = () => {
 
             <SessionMessage :status="status"/>
         </form>
-    </AppLayout>
+    </Container>
 </template>

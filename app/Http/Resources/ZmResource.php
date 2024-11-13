@@ -17,6 +17,7 @@ class ZmResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'user' => new UserResource($this->user),
             'name' => $this->name,
             'number' => $this->number,
             'designation' => Str::upper($this->designation),

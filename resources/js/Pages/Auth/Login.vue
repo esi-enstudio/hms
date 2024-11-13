@@ -5,7 +5,7 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextLink from "@/Components/TextLink.vue";
 import CheckBox from "@/Components/CheckBox.vue";
 import SessionMessage from "@/Components/SessionMessage.vue";
-import AppLayout from "@/Layouts/AppLayout.vue";
+import Container from "@/Components/Container.vue";
 
 const form = useForm({
     phone: null,
@@ -26,7 +26,7 @@ const submit = () => {
 <template>
     <Head title="Login |"/>
 
-    <AppLayout class="w-1/2">
+    <Container class="w-1/2">
         <SessionMessage :status="status"/>
 
         <h1 class="text-3xl mb-4 text-center">Login</h1>
@@ -57,5 +57,5 @@ const submit = () => {
 
             <PrimaryButton :disable="form.processing">Log In</PrimaryButton>
         </form>
-    </AppLayout>
+    </Container>
 </template>

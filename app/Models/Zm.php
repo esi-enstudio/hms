@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @method static when($search, \Closure $param)
+ * @method static latest()
  */
 class Zm extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
+    protected $with = ['user'];
 
     /**
      * Relationship with User model
