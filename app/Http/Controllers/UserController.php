@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Response;
 use Inertia\ResponseFactory;
 
@@ -26,6 +29,7 @@ class UserController extends Controller
             ->withQueryString()),
 
             'searchTerm' => $request->search,
+            'status' => session('msg'),
         ]);
     }
 
@@ -42,7 +46,29 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation
+        $attributes = $request->validate([
+            'avatar'    => ['nullable','file','max:1000','mimes:jpeg,jpg,png'],
+            'name'      => ['required','max:150'],
+            'role'      => ['required'],
+            'email'     => ['required','lowercase','max:255','unique:users,email'],
+            'phone'     => ['required','numeric','digits:11','unique:users,phone'],
+            'password'  => ['required','min:8','confirmed'],
+            'remarks'   => ['nullable'],
+        ]);
+
+        if ($request->hasFile('avatar'))
+        {
+            $attributes['avatar'] = Storage::disk('public')->put('avatars', $request->avatar);
+        }
+
+        // Create Use
+        $user = User::create($attributes);
+
+        event(new Registered($user));
+
+        // Redirect
+        return to_route('user.index')->with('msg', 'New user ['.$user['name'].'] was created successfully.');
     }
 
     /**

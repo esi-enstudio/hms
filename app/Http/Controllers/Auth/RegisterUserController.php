@@ -23,7 +23,7 @@ class RegisterUserController extends Controller
     {
         // Validation
         $attributes = $request->validate([
-            'avatar'    => ['nullable','image','max:300'],
+            'avatar'    => ['nullable','image','max:1000'],
             'name'      => ['required','max:150'],
             'email'     => ['required','lowercase','max:255','unique:users,email'],
             'phone'     => ['required','numeric','unique:users,phone'],

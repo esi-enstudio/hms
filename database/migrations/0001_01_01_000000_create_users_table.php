@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('remarks')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->timestamp('disabled_at')->nullable();
             $table->timestamps();
         });
 

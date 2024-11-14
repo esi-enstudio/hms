@@ -11,8 +11,8 @@
         </div>
 
         <form @submit.prevent="form.post(route('user.store'))">
-            <!-- Full Name -->
-            <ImageUpload/>
+            <!-- Image Upload -->
+            <ImageUpload @image="(e) => form.avatar = e"/>
 
             <!-- Full Name -->
             <TextInput
@@ -39,22 +39,21 @@
             />
 
             <!-- Role -->
-            <Select label="Role" icon="person-circle-question">
-                <option value="">Select Role</option>
-                <option value="">User</option>
-                <option value="">Md</option>
-                <option value="">Zm</option>
-                <option value="">Manager</option>
-                <option value="">Supervisor</option>
+            <Select
+                label="Role"
+                icon="person-circle-question"
+                v-model="form.role"
+                :message="form.errors.role"
+            >
+                <option value="user">User</option>
+                <option value="md">Md</option>
+                <option value="zm">Zm</option>
+                <option value="manager">Manager</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="rso">Rso</option>
+                <option value="operator">Dms Operator</option>
+                <option value="account">Account</option>
             </Select>
-
-            <!-- Remarks -->
-            <TextInput
-                label="Remarks"
-                icon="comments"
-                v-model="form.remarks"
-                :message="form.errors.remarks"
-            />
 
             <!-- Password -->
             <TextInput
@@ -71,6 +70,14 @@
                 icon="lock"
                 type="password"
                 v-model="form.password_confirmation"
+            />
+
+            <!-- Remarks -->
+            <TextInput
+                label="Remarks"
+                icon="comments"
+                v-model="form.remarks"
+                :message="form.errors.remarks"
             />
 
             <PrimaryButton :disable="form.processing">Create</PrimaryButton>
@@ -95,6 +102,7 @@ const form = useForm({
     password: null,
     password_confirmation: null,
     remarks: null,
+    role: null,
 })
 
 </script>

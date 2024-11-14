@@ -2,6 +2,8 @@
     <Head :title="'All User |'"/>
 
     <AppLayout>
+        <SessionMessage :status="status"/>
+
         <template #header>
             <p>Users</p>
         </template>
@@ -57,10 +59,12 @@ import {ref, watch} from "vue";
 import {router} from "@inertiajs/vue3";
 import {debounce} from "lodash";
 import AppLayout from "@/Layouts/AppLayout.vue";
+import SessionMessage from "@/Components/SessionMessage.vue";
 
 const props = defineProps({
     users: Object,
     searchTerm: String,
+    status: String,
 })
 
 const search = ref(props.searchTerm)
