@@ -23,11 +23,13 @@ class RegisterUserController extends Controller
     {
         // Validation
         $attributes = $request->validate([
-            'avatar'    => ['nullable','image','max:1000'],
+            'avatar'    => ['nullable','file','max:1000','mimes:jpeg,jpg,png'],
             'name'      => ['required','max:150'],
+            'role'      => ['required'],
             'email'     => ['required','lowercase','max:255','unique:users,email'],
-            'phone'     => ['required','numeric','unique:users,phone'],
+            'phone'     => ['required','numeric','digits:11','unique:users,phone'],
             'password'  => ['required','min:8','confirmed'],
+            'remarks'   => ['nullable'],
         ]);
 
         if ($request->hasFile('avatar'))
@@ -44,6 +46,6 @@ class RegisterUserController extends Controller
         Auth::login($user);
 
         // Redirect
-        return to_route('home')->with('msg', 'New user ['.$user['name'].'] was created successfully.');
+        return to_route('home');
     }
 }

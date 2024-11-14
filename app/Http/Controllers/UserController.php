@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -74,9 +75,16 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user): Response|ResponseFactory
     {
-        //
+        $user->created_at = Carbon::parse($user->created_at)->toDayDateTimeString();
+        $user->updated_at = Carbon::parse($user->updated_at)->toDayDateTimeString();
+//        $user->email_verified_at = Carbon::parse($user->email_verified_at)->toFormattedDayDateString();
+//        $user->disabled_at = Carbon::parse($user->disabled_at)->toFormattedDayDateString();
+
+        return inertia('User/Show', [
+            'user' => $user
+        ]);
     }
 
     /**

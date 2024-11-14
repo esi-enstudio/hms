@@ -1,26 +1,38 @@
 <?php
 
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\BpController;
+use App\Http\Controllers\DdHouseController;
+use App\Http\Controllers\DmsOperatorController;
+use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\MdController;
+use App\Http\Controllers\RetailerController;
+use App\Http\Controllers\RsoController;
+use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ZmController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth','verified'])->group(function (){
     Route::inertia('/', 'Main')->name('home');
-    Route::resource('/user', UserController::class);
+
+    Route::resources([
+        'user'          => UserController::class,
+        'ddHouse'       => DdHouseController::class,
+        'md'            => MdController::class,
+        'zm'            => ZmController::class,
+        'manager'       => ManagerController::class,
+        'supervisor'    => SupervisorController::class,
+        'rso'           => RsoController::class,
+        'retailer'      => RetailerController::class,
+        'bp'            => BpController::class,
+        'account'       => AccountController::class,
+        'dmsOperator'   => DmsOperatorController::class,
+    ]);
 });
 
-Route::resources([
-    'ddHouse'       => \App\Http\Controllers\DdHouseController::class,
-    'md'            => \App\Http\Controllers\MdController::class,
-    'zm'            => \App\Http\Controllers\ZmController::class,
-    'manager'       => \App\Http\Controllers\ManagerController::class,
-    'supervisor'    => \App\Http\Controllers\SupervisorController::class,
-    'rso'           => \App\Http\Controllers\RsoController::class,
-    'retailer'      => \App\Http\Controllers\RetailerController::class,
-    'bp'            => \App\Http\Controllers\BpController::class,
-    'account'       => \App\Http\Controllers\AccountController::class,
-    'dmsOperator'   => \App\Http\Controllers\DmsOperatorController::class,
-]);
+
 
 
 

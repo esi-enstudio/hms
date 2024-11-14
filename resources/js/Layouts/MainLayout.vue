@@ -118,9 +118,9 @@
                     <div v-else class="flex items-center space-x-3">
                         <Link :href="route('login')" :class="{'text-white bg-green-500 rounded-md px-2 py-1' : $page.component === 'Auth/Login'}">Login</Link>
 
-                        <span>|</span>
+<!--                        <span>|</span>-->
 
-                        <Link :href="route('register')" :class="{'text-white bg-green-500 rounded-md px-2 py-1' : $page.component === 'Auth/Register'}">Register</Link>
+<!--                        <Link :href="route('register')" :class="{'text-white bg-green-500 rounded-md px-2 py-1' : $page.component === 'Auth/Register'}">Register</Link>-->
                     </div>
                 </div>
             </div>

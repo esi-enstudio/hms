@@ -104,12 +104,8 @@
 </template>
 
 <script setup>
-import Pagination from "@/Components/Pagination.vue";
-import {ref, watch} from "vue";
-import {router} from "@inertiajs/vue3";
-import {debounce} from "lodash";
+
 import AppLayout from "@/Layouts/AppLayout.vue";
-import SessionMessage from "@/Components/SessionMessage.vue";
 
 const props = defineProps({
     ddHouse: Object,

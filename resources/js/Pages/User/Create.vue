@@ -10,7 +10,7 @@
             <Link :href="route('user.index')" class="hover:text-green-400">Back to list</Link>
         </div>
 
-        <form @submit.prevent="form.post(route('user.store'))">
+        <form @submit.prevent="submit">
             <!-- Image Upload -->
             <ImageUpload @image="(e) => form.avatar = e"/>
 
@@ -104,6 +104,12 @@ const form = useForm({
     remarks: null,
     role: null,
 })
+
+const submit = () => {
+    form.post(route("user.store"), {
+        onFinish: () => form.reset('password', 'password_confirmation'),
+    });
+}
 
 </script>
 

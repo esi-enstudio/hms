@@ -26,8 +26,7 @@
                 <th>Phone</th>
                 <th>Role</th>
                 <th>Status</th>
-                <th>Created At</th>
-                <th>Last Update</th>
+                <th>Action</th>
             </tr>
             </thead>
 
@@ -42,8 +41,11 @@
                 <td>{{user.phone}}</td>
                 <td>{{user.role}}</td>
                 <td>{{user.status}}</td>
-                <td>{{user.created}}</td>
-                <td>{{user.updated}}</td>
+                <td class="text-center space-x-2">
+                    <Link :href="route('user.show', user.id)" class="hover:text-green-400">Show</Link>
+                    <Link :href="route('user.edit', user.id)" class="hover:text-green-400">Edit</Link>
+                    <button class="hover:text-red-500" @click="delUser(user.id, user.name)">Delete</button>
+                </td>
             </tr>
             </tbody>
         </table>

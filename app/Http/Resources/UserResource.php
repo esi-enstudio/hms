@@ -23,8 +23,10 @@ class UserResource extends JsonResource
             'phone'     => $this->phone,
             'role'      => $this->role,
             'status'    => $this->status,
-            'created'   => Carbon::parse($this->created_at)->toDayDateTimeString(),
-            'updated'   => Carbon::parse($this->updated_at)->toDayDateTimeString(),
+            'email_verified_at'   => Carbon::parse($this->email_verified_at)->toDayDateTimeString(),
+            'disabled_at'   => Carbon::parse($this->disabled_at)->toDayDateTimeString(),
+            'created_at'   => Carbon::parse($this->created_at)->toDayDateTimeString(),
+            'updated_at'   => Carbon::parse($this->updated_at)->toDayDateTimeString(),
         ];
     }
 }
